@@ -26,5 +26,12 @@ RUN mkdir -p $PROJECT_PATH
 WORKDIR $PROJECT_PATH
 ENV LORA_APP_SERVER_VERSION 0.6.0
 RUN git clone --single-branch --branch 0.6.0 https://github.com/brocaar/lora-app-server ./
+# install all requirements
+RUN make requirements ui-requirements
+# run the tests
+RUN make test
+# build ui (requires NodeJS) and generate static files
+RUN make ui statics
+# compile
 RUN make build
 CMD ["lora-app-server"]
