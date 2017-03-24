@@ -7,7 +7,7 @@ node {
     }
     stage('Test') {
         image.inside {
-            sh "grep 'ENV LORASERVER_VERSION' Dockerfile | tr -d '\r' | awk '//{print \$3}' > version"
+            sh "grep 'ENV LORA_APP_SERVER_VERSION' Dockerfile | tr -d '\r' | awk '//{print \$3}' > version"
             sh 'lora-app-server -v'
         }
     }
