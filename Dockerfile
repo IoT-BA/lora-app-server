@@ -61,7 +61,7 @@ RUN git clone --single-branch --branch 0.6.0 https://github.com/brocaar/lora-app
 # install all requirements
 RUN make requirements ui-requirements
 # run the tests if $RUN_TEST = true
-RUN  if [ -z $RUN_TEST ]; then false; fi && if "$RUN_TEST"; then make test; fi;
+RUN  if [ -z $RUN_TEST ]; then export RUN_TEST=false; fi && if "$RUN_TEST"; then make test; else true; fi;
 # build ui (requires NodeJS) and generate static files
 RUN make ui statics
 # compile
