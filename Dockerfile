@@ -56,8 +56,8 @@ RUN go get github.com/grpc-ecosystem/grpc-gateway/protoc-gen-grpc-gateway
 
 RUN mkdir -p $PROJECT_PATH
 WORKDIR $PROJECT_PATH
-ENV LORA_APP_SERVER_VERSION 0.6.0
-RUN git clone --single-branch --branch 0.6.0 https://github.com/brocaar/lora-app-server ./
+ENV LORA_APP_SERVER_VERSION 0.7.2
+RUN git clone --single-branch --branch 0.7.2 https://github.com/brocaar/lora-app-server ./
 # install all requirements
 RUN make requirements ui-requirements
 # run the tests if $RUN_TEST = true
